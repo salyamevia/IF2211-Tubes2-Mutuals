@@ -45,7 +45,6 @@ namespace e_Handbook
             this.radioBFS = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dropdownExploreFriends = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -58,15 +57,16 @@ namespace e_Handbook
             this.filename = new System.Windows.Forms.Label();
             this.radioButtonContainer = new System.Windows.Forms.Panel();
             this.dropdownAccount = new System.Windows.Forms.ComboBox();
+            this.comboItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.topFakeStroke.SuspendLayout();
             this.topContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.socialTabHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eHandbookLogo)).BeginInit();
             this.bottomFakeStroke.SuspendLayout();
             this.bottomContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboItemBindingSource)).BeginInit();
             this.filenameContainer.SuspendLayout();
             this.radioButtonContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboItemBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // topFakeStroke
@@ -441,7 +441,7 @@ namespace e_Handbook
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "mainContainer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " e-Handbook";
+            this.Text = "e-Handbook Social Tab";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.topFakeStroke.ResumeLayout(false);
             this.topContainer.ResumeLayout(false);
@@ -449,11 +449,11 @@ namespace e_Handbook
             ((System.ComponentModel.ISupportInitialize)(this.eHandbookLogo)).EndInit();
             this.bottomFakeStroke.ResumeLayout(false);
             this.bottomContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.comboItemBindingSource)).EndInit();
             this.filenameContainer.ResumeLayout(false);
             this.filenameContainer.PerformLayout();
             this.radioButtonContainer.ResumeLayout(false);
             this.radioButtonContainer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboItemBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
