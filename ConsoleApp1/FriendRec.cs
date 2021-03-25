@@ -41,9 +41,92 @@ public class Functions
         return this.graf;
     }
 
+    public void FriendExplore()
+    {
+        string a = Console.ReadLine();
+        // Node yang sudah dikunjungi;
+        Dictionary<string, int> visited = new Dictionary<string, int>();
+        
+        // Assign semua node dengan 0 (Belum dikunjungi)
+        foreach(var map in graf)
+        {
+            visited.Add(map.Key, 0);
+        }
+
+        // Node a sudah dikunjungi
+        visited[a] = 1;
+
+        // Pencarian dilakukan hingga depth=2
+
+        HashSet<string> mutual = new HashSet<string>();
+        foreach (var val in graf[a])
+        {
+            mutual.Add(val);
+        }
+
+        Dictionary<string, int> answer = new Dictionary<string, int>();
+        foreach (var val in mutual)
+        {
+            foreach(var candidate in graf[val])
+            {
+                bool ok = true;
+                foreach(var test in graf[a])
+                {
+                    if(candidate==test || candidate == a)
+                    {
+                        ok = false;
+                        break;
+                    }
+                }
+                if (ok)
+                {
+                    if (!answer.ContainsKey(candidate))
+                    {
+                        answer.Add(candidate, 0);
+                    }
+                }
+            }
+        }
+        foreach (var x in answer)
+        {
+            int count = 0;
+            foreach (var val in graf[x.Key])
+            {
+                foreach(var test in mutual)
+                {
+                    if (val == test)
+                    {
+                        count++;
+                    }
+                }
+            }
+            answer[x.Key] = count;
+        }
+        // Sorting
+        foreach (KeyValuePair<string, int> x in answer.OrderByDescending(key => key.Value))
+        {
+            Console.Write("Nama akun: ");
+            Console.WriteLine(x.Key);
+            Console.WriteLine(x.Value + " mutual friends:");
+            foreach(var val in mutual)
+            {
+                foreach(var test in graf[x.Key])
+                {
+                    if (val == test)
+                    {
+                        Console.WriteLine(val);
+                        break;
+                    }
+                }
+            }
+            Console.WriteLine();
+        }
+    }
+
     public void exploreFriends()
     {
         // Mencari jalur yang menghubungkan dua buah node
+        // Implement checker for a and b validity?
         Console.Write("Akun pertama: ");
         string a = Console.ReadLine();
         Console.Write("Akun kedua: ");
