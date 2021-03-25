@@ -26,12 +26,6 @@ namespace e_Handbook
 
         }
 
-        // Exit Application
-        private void exit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         // Go Back to Home
         private void toHome_Click(object sender, EventArgs e)
         {

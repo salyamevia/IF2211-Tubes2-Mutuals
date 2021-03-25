@@ -29,7 +29,6 @@ namespace e_Handbook
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainContainer));
             this.topFakeStroke = new System.Windows.Forms.Panel();
             this.topContainer = new System.Windows.Forms.Panel();
@@ -57,7 +56,6 @@ namespace e_Handbook
             this.filename = new System.Windows.Forms.Label();
             this.radioButtonContainer = new System.Windows.Forms.Panel();
             this.dropdownAccount = new System.Windows.Forms.ComboBox();
-            this.comboItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.topFakeStroke.SuspendLayout();
             this.topContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.socialTabHeader)).BeginInit();
@@ -66,7 +64,6 @@ namespace e_Handbook
             this.bottomContainer.SuspendLayout();
             this.filenameContainer.SuspendLayout();
             this.radioButtonContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboItemBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // topFakeStroke
@@ -453,7 +450,6 @@ namespace e_Handbook
             this.filenameContainer.PerformLayout();
             this.radioButtonContainer.ResumeLayout(false);
             this.radioButtonContainer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboItemBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -486,7 +482,6 @@ namespace e_Handbook
         private System.Windows.Forms.Panel filenameContainer;
         private System.Windows.Forms.Label filename;
         private System.Windows.Forms.Panel radioButtonContainer;
-        private System.Windows.Forms.BindingSource comboItemBindingSource;
         private System.Windows.Forms.ComboBox dropdownAccount;
     }
 }

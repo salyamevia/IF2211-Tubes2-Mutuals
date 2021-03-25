@@ -29,11 +29,9 @@ namespace e_Handbook
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExploreFriends));
             this.toHome = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.exit = new System.Windows.Forms.Button();
             this.bottomContainer = new System.Windows.Forms.Panel();
             this.bottomFakeStroke = new System.Windows.Forms.Panel();
             this.socialTabHeader = new System.Windows.Forms.PictureBox();
@@ -41,14 +39,11 @@ namespace e_Handbook
             this.topContainer = new System.Windows.Forms.Panel();
             this.topFakeStroke = new System.Windows.Forms.Panel();
             this.exploreFriendViewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
-            this.comboItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bottomContainer.SuspendLayout();
             this.bottomFakeStroke.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.socialTabHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eHandbookLogo)).BeginInit();
             this.topContainer.SuspendLayout();
             this.topFakeStroke.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboItemBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // toHome
@@ -78,25 +73,9 @@ namespace e_Handbook
             this.label2.Text = "EXPLORE FRIENDS";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // exit
-            // 
-            this.exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(103)))), ((int)(((byte)(253)))));
-            this.exit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.exit.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exit.ForeColor = System.Drawing.Color.White;
-            this.exit.Location = new System.Drawing.Point(13, 3);
-            this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(19, 18);
-            this.exit.TabIndex = 21;
-            this.exit.Text = "x";
-            this.exit.UseMnemonic = false;
-            this.exit.UseVisualStyleBackColor = false;
-            this.exit.Click += new System.EventHandler(this.exit_Click);
-            // 
             // bottomContainer
             // 
             this.bottomContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
-            this.bottomContainer.Controls.Add(this.exit);
             this.bottomContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bottomContainer.Location = new System.Drawing.Point(0, 3);
             this.bottomContainer.Name = "bottomContainer";
@@ -207,23 +186,19 @@ namespace e_Handbook
             this.Name = "ExploreFriends";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "e-Handbook Social Tab";
-            this.bottomContainer.ResumeLayout(false);
             this.bottomFakeStroke.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.socialTabHeader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eHandbookLogo)).EndInit();
             this.topContainer.ResumeLayout(false);
             this.topFakeStroke.ResumeLayout(false);
             this.topFakeStroke.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboItemBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Button toHome;
-        private System.Windows.Forms.BindingSource comboItemBindingSource;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button exit;
         private System.Windows.Forms.Panel bottomContainer;
         private System.Windows.Forms.Panel bottomFakeStroke;
         private System.Windows.Forms.PictureBox socialTabHeader;

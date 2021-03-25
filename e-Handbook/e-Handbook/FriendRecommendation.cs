@@ -41,15 +41,15 @@ namespace e_Handbook
         }
 
         // Friend List Container Catcher
-        public Panel friendListContainerCatcher
+        public TableLayoutPanel friendListContainerCatcher
         {
             get
             {
-                return this.friendListContainer;
+                return new TableLayoutPanel();
             }
             set
             {
-                this.friendListContainer.Controls.Add(value);
+                
             }
         }
 
@@ -62,6 +62,5 @@ namespace e_Handbook
         {
             this.DialogResult = DialogResult.OK;
         }
-
     }
 }

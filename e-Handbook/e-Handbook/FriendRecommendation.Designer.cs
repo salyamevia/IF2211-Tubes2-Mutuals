@@ -39,7 +39,7 @@ namespace e_Handbook
             this.topContainer = new System.Windows.Forms.Panel();
             this.topFakeStroke = new System.Windows.Forms.Panel();
             this.chosenAccount = new System.Windows.Forms.Label();
-            this.friendListContainer = new System.Windows.Forms.Panel();
+            this.friendListContainer = new System.Windows.Forms.TableLayoutPanel();
             this.bottomFakeStroke.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.socialTabHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eHandbookLogo)).BeginInit();
@@ -145,10 +145,15 @@ namespace e_Handbook
             // 
             // friendListContainer
             // 
-            this.friendListContainer.AutoScroll = true;
-            this.friendListContainer.Location = new System.Drawing.Point(0, 140);
+            this.friendListContainer.ColumnCount = 1;
+            this.friendListContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.friendListContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.friendListContainer.Location = new System.Drawing.Point(12, 140);
             this.friendListContainer.Name = "friendListContainer";
-            this.friendListContainer.Size = new System.Drawing.Size(635, 277);
+            this.friendListContainer.RowCount = 1;
+            this.friendListContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.friendListContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.friendListContainer.Size = new System.Drawing.Size(652, 277);
             this.friendListContainer.TabIndex = 42;
             // 
             // FriendRecommendation
@@ -186,6 +191,6 @@ namespace e_Handbook
         private System.Windows.Forms.Panel topContainer;
         private System.Windows.Forms.Panel topFakeStroke;
         private System.Windows.Forms.Label chosenAccount;
-        private System.Windows.Forms.Panel friendListContainer;
+        private System.Windows.Forms.TableLayoutPanel friendListContainer;
     }
 }
