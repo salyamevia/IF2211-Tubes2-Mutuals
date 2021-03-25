@@ -141,10 +141,10 @@ public class Functions
         while (choice != "1" || choice != "2")
         {
             Console.Write("Pilihan anda: ");
-            string choice = Console.ReadLine();
+            choice = Console.ReadLine();
         }
 
-        HashSet<string> path = new HashSet<string>();
+        List<string> path = new List<string>();
 
         if (choice == "1")
         {
@@ -175,15 +175,17 @@ public class Functions
         }
     }
 
-    public HashSet<string> exploreBFS(string a, string b)
+    public List<string> exploreBFS(string a, string b)
     {
         // Mencari jalur antara a dan b secara BFS
-        Queue<Tuple<string, HashSet<string>>> q = new Queue<Tuple<string, HashSet<string>>>();
+        Queue<Tuple<string, List<string>>> q = new Queue<Tuple<string, List<string>>>();
 
 	    bool found = true;
-	    Tuple<string, HashSet<string>> CurrentVertice = new Tuple<string, HashSet<string>>();
-        CurrentVertice.Item1 = a;
-        CurrentVertice.Item2.Add(a);
+
+        List<string> FirstPath = new List<string>();
+        FirstPath.Add(a);
+
+	    Tuple<string, List<string>> CurrentVertice = new Tuple<string, List<string>>(a, FirstPath);
 	    Dictionary<string, int> check = new Dictionary<string, int>();
 
         // Memasukkan semua vertice ke dalam checker dengan value 0 (belum dikunjungi)
@@ -195,15 +197,17 @@ public class Functions
         // Jika belum goal node atau masih ada item queue yang belum dicek
 	    while (CurrentVertice.Item1 != b && found)
         {
-            check[CurrentVertice] = 1;
+            check[CurrentVertice.Item1] = 1;
 
             // Masukkan semua adjacent node ke CurrentVertice yang belum dikunjungi
             // Bentuk: tuple (AdjacentNode, PathSoFar -> PathSoFar + CurrentNode)
-            foreach (var node in graf[CurrentVertice])
+            foreach (var node in graf[CurrentVertice.Item1])
             {
                 if (check[node] == 0)
                 {
-                    Tuple<string, HashSet<string>> tpl = new Tuple<string, HashSet<string>>(node, CurrentVertice.Item2.Add(CurrentVertice.Item1));
+                    List<string> UpdatePath = CurrentVertice.Item2;
+                    UpdatePath.Add(CurrentVertice.Item1);
+                    Tuple<string, List<string>> tpl = new Tuple<string, List<string>>(node, UpdatePath);
                     q.Enqueue(tpl);
                 }
             }
@@ -222,20 +226,22 @@ public class Functions
         // Jika tidak ditemukan, reset path menjadi {a}, jika ditemukan, kembalikan path a - b
         if (found == false)
         {
-            HashSet<string> path = new HashSet<string>();
+            List<string> path = new List<string>();
             path.Add(a);
             return path;
         }
         else
         {
-            return CurrentVertice.Item2.Add(CurrentVertice);
+            List<string> FinalPath = CurrentVertice.Item2;
+            FinalPath.Add(CurrentVertice.Item1);
+            return FinalPath;
         }
     }
 
-    public HashSet<string> exploreDFS(string a, string b)
+    public List<string> exploreDFS(string a, string b)
     {
         // Mencari jalur antara a dan b secara DFS
-        HashSet<string> path = new HashSet<string>();
+        List<string> path = new List<string>();
 
         bool found = true;
 	    string CurrentVertice = a;
