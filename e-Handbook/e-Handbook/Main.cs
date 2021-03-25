@@ -249,6 +249,8 @@ namespace e_Handbook
             }
             else
             {
+                MessageBox.Show("Data submitted!");
+
                 // ---- SHOWING DATA ----
                 // > ---- Friend Recommendation ---- <
                 // Show Account Name
@@ -259,55 +261,35 @@ namespace e_Handbook
                 List<String> mutuals = new List<string>();
                 friends.Add("Hemoball");
                 friends.Add("Pokatt");
+                friends.Add("a");
+                friends.Add("a");
+                friends.Add("a");
+                friends.Add("a");
                 mutuals.Add("a");
                 mutuals.Add("b");
 
-                // Make Friend List Container
-                TableLayoutPanel friendListContainer = new TableLayoutPanel();
-                friendListContainer.Location = new System.Drawing.Point(12, 140);
-                friendListContainer.Size = new System.Drawing.Size(652, 277);
-                friendListContainer.ColumnCount = 1;
-                friendListContainer.RowCount = friends.Count;
+                // Init friendList Label
+                String friendList = "";
 
-                int rowCount = 0;
                 foreach (var item in friends)
                 {
-                    // Make Container
-                    TableLayoutPanel container = new TableLayoutPanel();
-                    container.Size = new Size(325, 155);
-                    container.AutoSize = true;
-                    container.ColumnCount = 1;
-                    container.RowCount = 2;
-
                     // Add Name
-                    Label name = new Label();
-                    name.Text = "\u25A0 " + item.ToString();
-                    name.ForeColor = Color.FromArgb(203, 103, 253);
-                    name.Font = new Font("Days One", 13);
-                    name.AutoSize = true;
-
+                    friendList += "\u25A0 " + item.ToString() + "\n";
+                    
                     // Add Mutuals
                     Label mutual = new Label();
-                    mutual.Text = mutuals.Count.ToString() + " Mutual Friends:\n";
+                    friendList += mutuals.Count.ToString() + " Mutual Friends:\n";
                     foreach (var m in mutuals)
                     {
-                        mutual.Text += "- " + m.ToString() + "\n";
+                        friendList += "- " + m.ToString() + "\n";
                     }
-                    mutual.ForeColor = Color.FromArgb(203, 103, 253);
-                    mutual.Font = new Font("Calibri", 13);
-                    mutual.AutoSize = true;
 
-                    // Add to Container
-                    container.Controls.Add(name, 0, 0);
-                    container.Controls.Add(mutual, 0, 1);
-
-                    // Add to Friend Rec Container
-                    friendListContainer.Controls.Add(container, 0, rowCount);
-                    rowCount++;
+                    // Add linebreak
+                    friendList += "\n";
 
                 }
                 // Add to Friend List
-                friendRec.friendListContainerCatcher = friendListContainer;
+                friendRec.friendListCatcher = friendList;
 
                 // Change state
                 submitted = true;

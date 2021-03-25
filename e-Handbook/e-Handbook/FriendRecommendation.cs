@@ -41,15 +41,15 @@ namespace e_Handbook
         }
 
         // Friend List Container Catcher
-        public TableLayoutPanel friendListContainerCatcher
+        public String friendListCatcher
         {
             get
             {
-                return new TableLayoutPanel();
+                return this.friendList.Text;
             }
             set
             {
-                
+                this.friendList.Text = value;
             }
         }
 

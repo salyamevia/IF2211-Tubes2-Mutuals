@@ -39,12 +39,14 @@ namespace e_Handbook
             this.topContainer = new System.Windows.Forms.Panel();
             this.topFakeStroke = new System.Windows.Forms.Panel();
             this.chosenAccount = new System.Windows.Forms.Label();
-            this.friendListContainer = new System.Windows.Forms.TableLayoutPanel();
+            this.friendListContainer = new System.Windows.Forms.Panel();
+            this.friendList = new System.Windows.Forms.Label();
             this.bottomFakeStroke.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.socialTabHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eHandbookLogo)).BeginInit();
             this.topContainer.SuspendLayout();
             this.topFakeStroke.SuspendLayout();
+            this.friendListContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // toHome
@@ -138,23 +140,29 @@ namespace e_Handbook
             this.chosenAccount.AutoSize = true;
             this.chosenAccount.Font = new System.Drawing.Font("Days One", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chosenAccount.ForeColor = System.Drawing.Color.White;
-            this.chosenAccount.Location = new System.Drawing.Point(419, 92);
+            this.chosenAccount.Location = new System.Drawing.Point(413, 92);
             this.chosenAccount.Name = "chosenAccount";
             this.chosenAccount.Size = new System.Drawing.Size(0, 24);
             this.chosenAccount.TabIndex = 31;
             // 
             // friendListContainer
             // 
-            this.friendListContainer.ColumnCount = 1;
-            this.friendListContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.friendListContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.friendListContainer.Location = new System.Drawing.Point(12, 140);
+            this.friendListContainer.AutoScroll = true;
+            this.friendListContainer.Controls.Add(this.friendList);
+            this.friendListContainer.Location = new System.Drawing.Point(58, 140);
             this.friendListContainer.Name = "friendListContainer";
-            this.friendListContainer.RowCount = 1;
-            this.friendListContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.friendListContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.friendListContainer.Size = new System.Drawing.Size(652, 277);
+            this.friendListContainer.Size = new System.Drawing.Size(541, 268);
             this.friendListContainer.TabIndex = 42;
+            // 
+            // friendList
+            // 
+            this.friendList.AutoSize = true;
+            this.friendList.Font = new System.Drawing.Font("Days One", 12F);
+            this.friendList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(103)))), ((int)(((byte)(253)))));
+            this.friendList.Location = new System.Drawing.Point(0, 0);
+            this.friendList.Name = "friendList";
+            this.friendList.Size = new System.Drawing.Size(0, 20);
+            this.friendList.TabIndex = 0;
             // 
             // FriendRecommendation
             // 
@@ -177,6 +185,8 @@ namespace e_Handbook
             this.topContainer.ResumeLayout(false);
             this.topFakeStroke.ResumeLayout(false);
             this.topFakeStroke.PerformLayout();
+            this.friendListContainer.ResumeLayout(false);
+            this.friendListContainer.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -191,6 +201,7 @@ namespace e_Handbook
         private System.Windows.Forms.Panel topContainer;
         private System.Windows.Forms.Panel topFakeStroke;
         private System.Windows.Forms.Label chosenAccount;
-        private System.Windows.Forms.TableLayoutPanel friendListContainer;
+        private System.Windows.Forms.Panel friendListContainer;
+        private System.Windows.Forms.Label friendList;
     }
 }
