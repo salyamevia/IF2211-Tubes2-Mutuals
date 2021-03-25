@@ -8,10 +8,15 @@ namespace Tubes
         static void Main(string[] args)
         {
             Functions x = new Functions();
-            int n = Convert.ToInt32(Console.ReadLine());
+            string loc = @"C:\Users\ghall\Desktop\IF2211-Tubes2-Mutuals\Test\test1.txt";      //  Tinggal ganti dirnya
+            x.BacaFile(loc);
+            List<string> file = x.getFile();
+            int n = Convert.ToInt32(file[0]);
+            file.RemoveAt(0);
             for (int i = 0; i < n; i++)
             {
-                string input = Console.ReadLine();
+                string input = file[0];
+                file.RemoveAt(0);
                 string[] inputs = input.Split(' ');
                 string a = inputs[0], b = inputs[1];
                 x.AddGraphIfNotExist(a, b); x.AddGraphIfNotExist(b, a);
