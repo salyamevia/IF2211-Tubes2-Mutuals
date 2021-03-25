@@ -163,7 +163,7 @@ public class Functions
         }
         else
         {
-            Console.WriteLine("Jalur koneksi antara " + a + " dan " + b + " adalah " + (path.Count - 1) + "-degree connection dengan path:");
+            Console.WriteLine("Jalur koneksi antara " + a + " dan " + b + " adalah " + (path.Count - 2) + "-degree connection dengan path:");
             int i = 0;
             while (i < path.Count - 1)
             {
