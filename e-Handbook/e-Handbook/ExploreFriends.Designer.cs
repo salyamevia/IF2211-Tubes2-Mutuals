@@ -38,7 +38,10 @@ namespace e_Handbook
             this.eHandbookLogo = new System.Windows.Forms.PictureBox();
             this.topContainer = new System.Windows.Forms.Panel();
             this.topFakeStroke = new System.Windows.Forms.Panel();
+            this.algoUsed = new System.Windows.Forms.Label();
             this.exploreFriendViewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
+            this.errorDialog = new System.Windows.Forms.Label();
+            this.errorDialogContainer = new System.Windows.Forms.Panel();
             this.bottomFakeStroke.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.socialTabHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eHandbookLogo)).BeginInit();
@@ -68,10 +71,9 @@ namespace e_Handbook
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(21, 92);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(215, 24);
+            this.label2.Size = new System.Drawing.Size(222, 24);
             this.label2.TabIndex = 30;
-            this.label2.Text = "EXPLORE FRIENDS";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.label2.Text = "EXPLORE FRIENDS ";
             // 
             // bottomContainer
             // 
@@ -123,6 +125,7 @@ namespace e_Handbook
             // topFakeStroke
             // 
             this.topFakeStroke.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(103)))), ((int)(((byte)(253)))));
+            this.topFakeStroke.Controls.Add(this.algoUsed);
             this.topFakeStroke.Controls.Add(this.topContainer);
             this.topFakeStroke.Controls.Add(this.label2);
             this.topFakeStroke.Dock = System.Windows.Forms.DockStyle.Top;
@@ -130,6 +133,16 @@ namespace e_Handbook
             this.topFakeStroke.Name = "topFakeStroke";
             this.topFakeStroke.Size = new System.Drawing.Size(800, 134);
             this.topFakeStroke.TabIndex = 24;
+            // 
+            // algoUsed
+            // 
+            this.algoUsed.AutoSize = true;
+            this.algoUsed.Font = new System.Drawing.Font("Days One", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.algoUsed.ForeColor = System.Drawing.Color.White;
+            this.algoUsed.Location = new System.Drawing.Point(249, 92);
+            this.algoUsed.Name = "algoUsed";
+            this.algoUsed.Size = new System.Drawing.Size(0, 24);
+            this.algoUsed.TabIndex = 31;
             // 
             // exploreFriendViewer
             // 
@@ -171,12 +184,31 @@ namespace e_Handbook
             this.exploreFriendViewer.ZoomF = 1D;
             this.exploreFriendViewer.ZoomWindowThreshold = 0.05D;
             // 
+            // errorDialog
+            // 
+            this.errorDialog.AutoSize = true;
+            this.errorDialog.Font = new System.Drawing.Font("Calibri", 11.25F);
+            this.errorDialog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(103)))), ((int)(((byte)(253)))));
+            this.errorDialog.Location = new System.Drawing.Point(685, 189);
+            this.errorDialog.Name = "errorDialog";
+            this.errorDialog.Size = new System.Drawing.Size(0, 18);
+            this.errorDialog.TabIndex = 39;
+            // 
+            // errorDialogContainer
+            // 
+            this.errorDialogContainer.Location = new System.Drawing.Point(682, 189);
+            this.errorDialogContainer.Name = "errorDialogContainer";
+            this.errorDialogContainer.Size = new System.Drawing.Size(106, 136);
+            this.errorDialogContainer.TabIndex = 40;
+            // 
             // ExploreFriends
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.errorDialog);
+            this.Controls.Add(this.errorDialogContainer);
             this.Controls.Add(this.exploreFriendViewer);
             this.Controls.Add(this.toHome);
             this.Controls.Add(this.bottomFakeStroke);
@@ -193,6 +225,7 @@ namespace e_Handbook
             this.topFakeStroke.ResumeLayout(false);
             this.topFakeStroke.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -206,5 +239,8 @@ namespace e_Handbook
         private System.Windows.Forms.Panel topContainer;
         private System.Windows.Forms.Panel topFakeStroke;
         private Microsoft.Msagl.GraphViewerGdi.GViewer exploreFriendViewer;
+        private System.Windows.Forms.Label errorDialog;
+        private System.Windows.Forms.Label algoUsed;
+        private System.Windows.Forms.Panel errorDialogContainer;
     }
 }

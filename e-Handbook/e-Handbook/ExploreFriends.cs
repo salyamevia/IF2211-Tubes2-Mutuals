@@ -12,24 +12,93 @@ namespace e_Handbook
 {
     public partial class ExploreFriends : Form
     {
+        public static Functions functions = new Functions();
+
         public ExploreFriends()
         {
             InitializeComponent();
         }
-
-        /*
-            DESIGN ELEMENTS
-        */
-        // "Explore Friends Label
-        private void label2_Click(object sender, EventArgs e)
+        // Error Dialog Catcher
+        public String errorDialogCatcher
         {
+            get
+            {
+                return this.errorDialog.Text;
+            }
+            set
+            {
+                this.errorDialog.Text = value;
+            }
+        }
 
+        // Algoname Catcher
+        public String algoNameCatcher
+        {
+            get
+            {
+                return this.algoUsed.Text;
+            }
+            set
+            {
+                this.algoUsed.Text = value;
+            }
+        }
+
+        // Nodes Handler
+        public Tuple<String, List<String>> nodesHandler
+        {
+            get
+            {
+                return new Tuple<String, List<String>>("", new List<String>());
+            }
+            set
+            {
+                // Init graph
+                functions.BacaFile(value.Item1);
+
+                // Create a graph object
+                Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
+
+                // Add edges to normal graf
+                int colorEdges = 0; 
+                foreach (var map in functions.getGraf())
+                {
+                    foreach (var vals in map.Value)
+                    {
+                        if (map.Key == value.Item2[colorEdges] && vals == value.Item2[colorEdges+1])
+                        {
+                            graph.AddEdge(map.Key, vals).Attr.Color = new Microsoft.Msagl.Drawing.Color(230, 226, 98);
+                            if (colorEdges+2 < value.Item2.Count)
+                            {
+                                colorEdges++;
+                            }
+                        } else
+                        {
+                            graph.AddEdge(map.Key, vals);
+                        }
+                    }
+
+                    // Add color to nodes and change shape to circle
+                    if (value.Item2.Contains(map.Key)) {
+                        graph.FindNode(map.Key).Attr.FillColor = new Microsoft.Msagl.Drawing.Color(203, 103, 253);
+                    }
+                    graph.FindNode(map.Key).Attr.Shape = Microsoft.Msagl.Drawing.Shape.Circle;
+                }
+
+                // Bind with viewer
+                exploreFriendViewer.Graph = graph;
+            }
         }
 
         // Go Back to Home
         private void toHome_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

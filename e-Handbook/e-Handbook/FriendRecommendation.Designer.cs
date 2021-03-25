@@ -74,7 +74,6 @@ namespace e_Handbook
             this.friendRecTitle.Size = new System.Drawing.Size(392, 24);
             this.friendRecTitle.TabIndex = 30;
             this.friendRecTitle.Text = "FRIEND RECOMMENDATION(S) FOR";
-            this.friendRecTitle.Click += new System.EventHandler(this.label2_Click);
             // 
             // bottomContainer
             // 

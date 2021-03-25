@@ -10,7 +10,6 @@ using System.Windows.Forms;
 
 namespace e_Handbook
 {
- 
     public partial class mainContainer : Form
     {
         // Form Initialization
@@ -22,127 +21,14 @@ namespace e_Handbook
 
         public static FriendRecommendation friendRec = new FriendRecommendation();
         public static ExploreFriends exploreFriend = new ExploreFriends();
+        public static Functions logicFunctions = new Functions();
 
         public mainContainer()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         /*
-            DESIGN ELEMENTS
-         */
-        // Filename container
-        private void panel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        // File Graph Viewer Box
-        private void fileGraphViewer_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        // "Graph File" Label
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        // "Algorithm" Label
-        private void label1_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        // "Choose" Label
-        private void label1_Click_3(object sender, EventArgs e)
-        {
-
-        }
-        // "Account" Label
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-        // "Explore" Label
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        // Social Tab Logo
-        private void socialTabHeader_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        /*
-            RADIO BUTTONS
-         */
-        // BFS Radio
-        private void radioBFS_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        // DFS Radio
-        private void radioDFS_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        // Radio Container
-        private void radioButtonContainer_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        /*
-            DROPDOWN SECTION
-            Dropdown handled on Browse button as it 
-            automatically shows after file is loaded
-        */
-        // Choose Account
-        private void dropdownAccount_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
-        // Explore Friends
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        /*
-            ======================================================================================
             GENERAL 
         */
         // Exit Button
@@ -171,39 +57,45 @@ namespace e_Handbook
             }
 
             // ---- SHOWING DATA ----
-            // > ---- Dropdown Explore Friends ---- <
-            // Display Accounts
+            // > ---- Read Graph File ---- <
+            logicFunctions.BacaFile(filepath);
+
+            // Get Nodes List
             List<String> explore = new List<String>();
+            List<String> friend = new List<String>();
+            foreach (var map in logicFunctions.getGraf())
+            {
+                explore.Add(map.Key);
+                friend.Add(map.Key);
+            }
 
-            // Add nodes
-            explore.Add("Pokkat");
-            explore.Add("Hemobol");
-
-            // Add to dropdown
+            // > ---- Dropdown Explore Friends ---- <
             dropdownExploreFriends.DataSource = explore;
 
             // > ---- Dropdown Account ---- <
-            // Display Accounts
-            List<String> account = new List<String>();
-
-            // Add nodes
-            account.Add("Cikibol");
-            account.Add("Koala");
-
-            // Add to dropdown
-            dropdownAccount.DataSource = account;
+            dropdownAccount.DataSource = friend;
 
             // > ---- Display Graph ---- <
             // Create a graph object
             Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
 
             // Add edges
-            graph.AddEdge("Cikibol", "Pokkat");
-            graph.AddEdge("Koala", "Pokkat");
+            foreach(var map in logicFunctions.getGraf())
+            {
+                foreach (var vals in map.Value)
+                {
+                    graph.AddEdge(map.Key, vals);
+                }
+            }
+
+            //Change shape to circle
+            foreach (var map in logicFunctions.getGraf())
+            {
+                graph.FindNode(map.Key).Attr.Shape = Microsoft.Msagl.Drawing.Shape.Circle;
+            }
 
             // Bind with viewer
             fileGraphViewer.Graph = graph;
-
         }
 
         /*
@@ -256,30 +148,21 @@ namespace e_Handbook
                 // Show Account Name
                 friendRec.accountName = chosenAccount.ToUpper();
 
-                // Show Friend List
-                List<String> friends = new List<String>();
-                List<String> mutuals = new List<string>();
-                friends.Add("Hemoball");
-                friends.Add("Pokatt");
-                friends.Add("a");
-                friends.Add("a");
-                friends.Add("a");
-                friends.Add("a");
-                mutuals.Add("a");
-                mutuals.Add("b");
+                // Get Result
+                Dictionary<String, List<String>> friendRecResult =
+                    logicFunctions.friendRecommendation(chosenAccount.ToString());
 
-                // Init friendList Label
+                // Init Label
                 String friendList = "";
 
-                foreach (var item in friends)
+                foreach (var map in friendRecResult)
                 {
                     // Add Name
-                    friendList += "\u25A0 " + item.ToString() + "\n";
+                    friendList += "\u25A0 " + map.Key + "\n";
                     
                     // Add Mutuals
-                    Label mutual = new Label();
-                    friendList += mutuals.Count.ToString() + " Mutual Friends:\n";
-                    foreach (var m in mutuals)
+                    friendList += map.Value.Count.ToString() + " Mutual Friends:\n";
+                    foreach (var m in map.Value)
                     {
                         friendList += "- " + m.ToString() + "\n";
                     }
@@ -291,11 +174,29 @@ namespace e_Handbook
                 // Add to Friend List
                 friendRec.friendListCatcher = friendList;
 
-                // Change state
-                submitted = true;
-
                 // > ---- Explore Friends ---- <
+                // Get Result
+                List<string> result = logicFunctions.exploreFriends(chosenAccount, exploreFriendsWith, algo);
+
+                // Check if error
+                if (result.Count == 1)
+                {
+                    exploreFriend.errorDialogCatcher = result[0];
+                } else
+                {
+                    if (algo) { 
+                        exploreFriend.algoNameCatcher = ": DFS"; 
+                    } 
+                    else { 
+                        exploreFriend.algoNameCatcher = ": BFS"; 
+                    }
+                    Tuple<String, List<String>> data = new Tuple<String, List<String>>(filepath, result);
+                    exploreFriend.nodesHandler = data;
+                }
+
             }
+            // Change state
+            submitted = true;
         }
 
         /*

@@ -70,6 +70,7 @@
     <Compile Include="FriendRecommendation.Designer.cs">
       <DependentUpon>FriendRecommendation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Functions.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

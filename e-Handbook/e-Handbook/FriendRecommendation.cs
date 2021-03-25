@@ -17,16 +17,6 @@ namespace e_Handbook
             InitializeComponent();
         }
 
-        /*
-            DESIGN ELEMENTS
-         */
-
-        // "Friend Recommendation For" Label
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         // Chosen Account Name Text Catcher
         public String accountName
         {

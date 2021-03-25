@@ -75,7 +75,6 @@ namespace e_Handbook
             this.topFakeStroke.Name = "topFakeStroke";
             this.topFakeStroke.Size = new System.Drawing.Size(800, 80);
             this.topFakeStroke.TabIndex = 0;
-            this.topFakeStroke.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // topContainer
             // 
@@ -86,7 +85,6 @@ namespace e_Handbook
             this.topContainer.Name = "topContainer";
             this.topContainer.Size = new System.Drawing.Size(800, 77);
             this.topContainer.TabIndex = 1;
-            this.topContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // socialTabHeader
             // 
@@ -96,7 +94,6 @@ namespace e_Handbook
             this.socialTabHeader.Size = new System.Drawing.Size(213, 41);
             this.socialTabHeader.TabIndex = 3;
             this.socialTabHeader.TabStop = false;
-            this.socialTabHeader.Click += new System.EventHandler(this.socialTabHeader_Click);
             // 
             // eHandbookLogo
             // 
@@ -152,7 +149,6 @@ namespace e_Handbook
             this.graphFile.Size = new System.Drawing.Size(117, 24);
             this.graphFile.TabIndex = 4;
             this.graphFile.Text = "Graph File";
-            this.graphFile.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // browse
             // 
@@ -179,7 +175,6 @@ namespace e_Handbook
             this.algorithm.Size = new System.Drawing.Size(111, 24);
             this.algorithm.TabIndex = 7;
             this.algorithm.Text = "Algorithm";
-            this.algorithm.Click += new System.EventHandler(this.label1_Click_2);
             // 
             // radioDFS
             // 
@@ -193,7 +188,6 @@ namespace e_Handbook
             this.radioDFS.TabStop = true;
             this.radioDFS.Text = "DFS";
             this.radioDFS.UseVisualStyleBackColor = true;
-            this.radioDFS.CheckedChanged += new System.EventHandler(this.radioDFS_CheckedChanged);
             // 
             // radioBFS
             // 
@@ -207,7 +201,6 @@ namespace e_Handbook
             this.radioBFS.TabStop = true;
             this.radioBFS.Text = "BFS";
             this.radioBFS.UseVisualStyleBackColor = true;
-            this.radioBFS.CheckedChanged += new System.EventHandler(this.radioBFS_CheckedChanged);
             // 
             // label1
             // 
@@ -219,7 +212,6 @@ namespace e_Handbook
             this.label1.Size = new System.Drawing.Size(86, 24);
             this.label1.TabIndex = 10;
             this.label1.Text = "Choose";
-            this.label1.Click += new System.EventHandler(this.label1_Click_3);
             // 
             // label2
             // 
@@ -231,7 +223,6 @@ namespace e_Handbook
             this.label2.Size = new System.Drawing.Size(97, 24);
             this.label2.TabIndex = 11;
             this.label2.Text = "Account";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // dropdownExploreFriends
             // 
@@ -244,7 +235,6 @@ namespace e_Handbook
             this.dropdownExploreFriends.Name = "dropdownExploreFriends";
             this.dropdownExploreFriends.Size = new System.Drawing.Size(149, 26);
             this.dropdownExploreFriends.TabIndex = 15;
-            this.dropdownExploreFriends.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -267,7 +257,6 @@ namespace e_Handbook
             this.label4.Size = new System.Drawing.Size(87, 24);
             this.label4.TabIndex = 13;
             this.label4.Text = "Explore";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -336,7 +325,6 @@ namespace e_Handbook
             this.fileGraphViewer.WindowZoomButtonPressed = false;
             this.fileGraphViewer.ZoomF = 1D;
             this.fileGraphViewer.ZoomWindowThreshold = 0.05D;
-            this.fileGraphViewer.Load += new System.EventHandler(this.fileGraphViewer_Load);
             // 
             // toExploreFriends
             // 
@@ -376,7 +364,6 @@ namespace e_Handbook
             this.filenameContainer.Name = "filenameContainer";
             this.filenameContainer.Size = new System.Drawing.Size(126, 25);
             this.filenameContainer.TabIndex = 21;
-            this.filenameContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // filename
             // 
@@ -396,7 +383,6 @@ namespace e_Handbook
             this.radioButtonContainer.Name = "radioButtonContainer";
             this.radioButtonContainer.Size = new System.Drawing.Size(149, 53);
             this.radioButtonContainer.TabIndex = 22;
-            this.radioButtonContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.radioButtonContainer_Paint);
             // 
             // dropdownAccount
             // 
@@ -408,7 +394,6 @@ namespace e_Handbook
             this.dropdownAccount.Name = "dropdownAccount";
             this.dropdownAccount.Size = new System.Drawing.Size(149, 26);
             this.dropdownAccount.TabIndex = 23;
-            this.dropdownAccount.SelectedIndexChanged += new System.EventHandler(this.dropdownAccount_SelectedIndexChanged);
             // 
             // mainContainer
             // 
@@ -439,7 +424,6 @@ namespace e_Handbook
             this.Name = "mainContainer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "e-Handbook Social Tab";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.topFakeStroke.ResumeLayout(false);
             this.topContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.socialTabHeader)).EndInit();

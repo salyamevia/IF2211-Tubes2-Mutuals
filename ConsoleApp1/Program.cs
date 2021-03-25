@@ -32,8 +32,6 @@ namespace ConsoleApp1
             Console.Write("Nama yang akan dicari rekomendasinya: ");
             x.FriendExplore();
 
-            // test
-            dfs(this.getGraf());
         }
     }
 }
