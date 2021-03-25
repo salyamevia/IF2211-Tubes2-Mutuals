@@ -178,11 +178,13 @@ public class Functions
     public HashSet<string> exploreBFS(string a, string b)
     {
         // Mencari jalur antara a dan b secara BFS
-        Queue<Tuple<string, HashSet<string>>> q = new Queue<Tuple<string, HashSet<string>>>;
+        Queue<Tuple<string, HashSet<string>>> q = new Queue<Tuple<string, HashSet<string>>>();
 
 	    bool found = true;
-	    Tuple<string, HashSet<string>> CurrentVertice = new Tuple<string, HashSet<string>>(a, {a});
-	    Dictionary<string, int> check = new Dictionary<string, int>
+	    Tuple<string, HashSet<string>> CurrentVertice = new Tuple<string, HashSet<string>>();
+        CurrentVertice.Item1 = a;
+        CurrentVertice.Item2.Add(a);
+	    Dictionary<string, int> check = new Dictionary<string, int>();
 
         // Memasukkan semua vertice ke dalam checker dengan value 0 (belum dikunjungi)
 	    foreach (var node in graf)
@@ -237,7 +239,7 @@ public class Functions
 
         bool found = true;
 	    string CurrentVertice = a;
-	    Dictionary<string, int> check = new Dictionary<string, int>;
+	    Dictionary<string, int> check = new Dictionary<string, int>();
 
 	    // Memasukkan semua vertice ke dalam checker dengan value 0 (belum dikunjungi)
 	    foreach (var node in graf)
