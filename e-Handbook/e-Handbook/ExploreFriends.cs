@@ -53,26 +53,32 @@ namespace e_Handbook
             }
             set
             {
+                // Make edge pairs
+                List<Tuple<String, String>> resultingEdge = new List<Tuple<String, String>>();
+                for (int i = 1; i < value.Item2.Count; i++)
+                {
+                    Tuple<String, String> temp = new Tuple<String, String>(value.Item2[i - 1], value.Item2[i]);
+                    resultingEdge.Add(temp);
+                }
+
                 // Init graph
                 functions.BacaFile(value.Item1);
 
                 // Create a graph object
                 Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
+                
+                // Add resulting edges
+                foreach(Tuple<String, String> edge in resultingEdge) {
+                    graph.AddEdge(edge.Item1, edge.Item2).Attr.Color = new Microsoft.Msagl.Drawing.Color(230, 226, 98);
+                }
 
-                // Add edges to normal graf
-                int colorEdges = 0; 
+                // Add other edges
                 foreach (var map in functions.getGraf())
                 {
                     foreach (var vals in map.Value)
                     {
-                        if (map.Key == value.Item2[colorEdges] && vals == value.Item2[colorEdges+1])
-                        {
-                            graph.AddEdge(map.Key, vals).Attr.Color = new Microsoft.Msagl.Drawing.Color(230, 226, 98);
-                            if (colorEdges+2 < value.Item2.Count)
-                            {
-                                colorEdges++;
-                            }
-                        } else
+                        Tuple<String, String> check = new Tuple<String, String>(map.Key, vals);
+                        if (!resultingEdge.Contains(check))
                         {
                             graph.AddEdge(map.Key, vals);
                         }
