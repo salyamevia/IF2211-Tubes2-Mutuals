@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Msagl.Drawing;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -54,48 +55,53 @@ namespace e_Handbook
                 // filename is the Label name inside the filename container
                 filename.Text = ofd.SafeFileName;
                 filepath = ofd.FileName;
-            }
 
-            // ---- SHOWING DATA ----
-            // > ---- Read Graph File ---- <
-            logicFunctions.BacaFile(filepath);
+                // ---- SHOWING DATA ----
+                // > ---- Read Graph File ---- <
+                logicFunctions.BacaFile(filepath);
 
-            // Get Nodes List
-            List<String> explore = new List<String>();
-            List<String> friend = new List<String>();
-            foreach (var map in logicFunctions.getGraf())
-            {
-                explore.Add(map.Key);
-                friend.Add(map.Key);
-            }
-
-            // > ---- Dropdown Explore Friends ---- <
-            dropdownExploreFriends.DataSource = explore;
-
-            // > ---- Dropdown Account ---- <
-            dropdownAccount.DataSource = friend;
-
-            // > ---- Display Graph ---- <
-            // Create a graph object
-            Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
-
-            // Add edges
-            foreach(var map in logicFunctions.getGraf())
-            {
-                foreach (var vals in map.Value)
+                // Get Nodes List
+                List<String> explore = new List<String>();
+                List<String> friend = new List<String>();
+                foreach (var map in logicFunctions.getGraf())
                 {
-                    graph.AddEdge(map.Key, vals);
+                    explore.Add(map.Key);
+                    friend.Add(map.Key);
                 }
-            }
 
-            //Change shape to circle
-            foreach (var map in logicFunctions.getGraf())
-            {
-                graph.FindNode(map.Key).Attr.Shape = Microsoft.Msagl.Drawing.Shape.Circle;
-            }
+                // > ---- Dropdown Explore Friends ---- <
+                dropdownExploreFriends.DataSource = explore;
 
-            // Bind with viewer
-            fileGraphViewer.Graph = graph;
+                // > ---- Dropdown Account ---- <
+                dropdownAccount.DataSource = friend;
+
+                // > ---- Display Graph ---- <
+                // Create a graph object
+                Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
+
+                // Add edges
+                List<Tuple<String, String>> addedEdge = new List<Tuple<String, String>>();
+                foreach (var map in logicFunctions.getGraf())
+                {
+                    foreach (var vals in map.Value)
+                    {
+                        Tuple<String, String> check1 = new Tuple<String, String>(map.Key, vals);
+                        Tuple<String, String> check2 = new Tuple<String, String>(vals, map.Key);
+                        if (!addedEdge.Contains(check1) && !addedEdge.Contains(check2))
+                        {
+                            var ed = graph.AddEdge(map.Key, vals);
+                            ed.Attr.ArrowheadAtTarget = ArrowStyle.None;
+                            addedEdge.Add(check1);
+                            addedEdge.Add(check2);
+                        }
+                    }
+
+                    // Change to circle
+                    graph.FindNode(map.Key).Attr.Shape = Microsoft.Msagl.Drawing.Shape.Circle;
+                }
+                // Bind with viewer
+                fileGraphViewer.Graph = graph;
+            }
         }
 
         /*
@@ -133,8 +139,8 @@ namespace e_Handbook
             {
                 // File not loaded
                 MessageBox.Show("You have not selected any files yet.");
-            } 
-            else if (dropdownAccount.SelectedValue == null && dropdownExploreFriends.SelectedValue == null)
+            }
+            if (!radioBFS.Checked && !radioDFS.Checked)
             {
                 // Radio button not selected
                 MessageBox.Show("You have not selected any algorithm yet.");
@@ -159,7 +165,7 @@ namespace e_Handbook
                 {
                     // Add Name
                     friendList += "\u25A0 " + map.Key + "\n";
-                    
+
                     // Add Mutuals
                     friendList += map.Value.Count.ToString() + " Mutual Friends:\n";
                     foreach (var m in map.Value)
@@ -182,18 +188,22 @@ namespace e_Handbook
                 if (result.Count == 1)
                 {
                     exploreFriend.errorDialogCatcher = result[0];
-                } else
+                }
+                else
                 {
-                    if (algo) { 
-                        exploreFriend.algoNameCatcher = ": DFS"; 
-                    } 
-                    else { 
-                        exploreFriend.algoNameCatcher = ": BFS"; 
+                    if (algo)
+                    {
+                        exploreFriend.algoNameCatcher = ": DFS";
+                    }
+                    else
+                    {
+                        exploreFriend.algoNameCatcher = ": BFS";
                     }
                     Tuple<String, List<String>> data = new Tuple<String, List<String>>(filepath, result);
                     exploreFriend.nodesHandler = data;
                 }
 
+                
             }
             // Change state
             submitted = true;
