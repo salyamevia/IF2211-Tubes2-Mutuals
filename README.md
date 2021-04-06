@@ -2,6 +2,12 @@
 
 > _The Electronic Student Handbook, or e-Handbook for short, is a digital handbook used by the students of Hope's Peak Academy and the Ultimate Academy for Gifted Juveniles. The latest e-Handbook edition now features a **Socials Tab** where students can find friends more easily._
 
+<img src="image13.png" width="500"></img>
+<img src="image12.png" width="500"></img>
+<img src="image15.png" width="500"></img>
+
+*Layout is inspired from the Danganronpa franchise.*
+
 ## How Does It Work
 Pemecahan masalah diawali dengan memecah deskripsi persoalan yang diberikan menjadi beberapa modul terpisah yang dapat diimplementasikan satu-persatu, yakni:
 - Input file dan representasi graf
